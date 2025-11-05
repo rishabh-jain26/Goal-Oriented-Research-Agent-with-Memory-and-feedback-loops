@@ -1,0 +1,228 @@
+/* --- Basic Setup --- */
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: #f4f7f6;
+  color: #333;
+  margin: 0;
+}
+
+h1, h2, h3 {
+  font-weight: 600;
+  margin-top: 0;
+}
+
+.card {
+  background-color: #ffffff;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.agent-dashboard {
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  margin-bottom: 1.5rem;
+}
+
+header h1 {
+  font-size: 2rem;
+  text-align: left;
+}
+
+/* --- Goal Setter --- */
+.goal-setter {
+  margin-bottom: 1.5rem;
+}
+
+.goal-setter h2 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.goal-input-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.goal-input-group input[type="text"] {
+  flex-grow: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+}
+
+.goal-input-group button {
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+}
+
+.goal-input-group button:disabled {
+  background-color: #5a6268;
+  cursor: not-allowed;
+}
+
+/* --- Main 3-Column Layout --- */
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr; /* Center column is 2x wider */
+  gap: 1.5rem;
+  align-items: flex-start; /* Aligns columns to the top */
+}
+
+.left-column, .center-column, .right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* --- Left Column: Status & Plan --- */
+.status-badge {
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  display: inline-block;
+  text-transform: capitalize;
+}
+
+.status-badge.idle { background-color: #6c757d; color: white; }
+.status-badge.running { background-color: #007bff; color: white; }
+.status-badge.awaitingfeedback { background-color: #ffc107; color: #333; }
+.status-badge.refining { background-color: #fd7e14; color: white; }
+
+
+.task-plan-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.task-plan-list li {
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.task-plan-list li span {
+  font-size: 1rem;
+}
+
+.task-plan-list li.done { color: #6c757d; }
+.task-plan-list li.inprogress { font-weight: 600; }
+.task-plan-list li.awaiting_feedback { font-weight: 600; color: #ffc107; }
+.task-plan-list li.empty { color: #6c757d; font-style: italic; }
+
+/* --- Center Column: Log --- */
+.center-column {
+  height: 100%;
+}
+
+.log-container {
+  height: 600px; /* Fixed height */
+  overflow-y: auto; /* Makes it scrollable */
+  background-color: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 6px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.log-entry {
+  line-height: 1.5;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+}
+
+.log-entry strong {
+  margin-right: 0.5rem;
+}
+
+/* Color-code the log sources */
+.log-entry.planner { background-color: #e0e7ff; border-left: 3px solid #6366f1; }
+.log-entry.researcher { background-color: #d1fae5; border-left: 3px solid #10b981; }
+.log-entry.synthesizer { background-color: #fef3c7; border-left: 3px solid #f59e0b; }
+.log-entry.agent { background-color: #e5e7eb; border-left: 3px solid #6b7280; }
+.log-entry.human { background-color: #fee2e2; border-left: 3px solid #ef4444; font-style: italic; }
+.log-entry.self-corrector { background-color: #fde68a; border-left: 3px solid #f59e0b; }
+
+
+/* --- Feedback Module --- */
+.feedback-module {
+  margin-top: 1rem;
+  border-top: 1px solid #e9ecef;
+  padding-top: 1.5rem;
+}
+
+.feedback-module h3 {
+  color: #ef4444;
+  margin-bottom: 0.5rem;
+}
+
+.feedback-module p {
+  margin: 0 0 1rem 0;
+  font-size: 0.9rem;
+  color: #6c757d;
+}
+
+.feedback-module textarea {
+  width: 100%;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 0.75rem;
+  border: 1px solid #dcdcdc;
+  border-radius: 6px;
+  box-sizing: border-box; /* Important */
+  margin-bottom: 1rem;
+}
+
+.feedback-module button {
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: #dc3545;
+  color: white;
+}
+
+/* --- Right Column: Memory --- */
+.memory-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 300px;
+  overflow-y: auto;
+  font-size: 0.9rem;
+}
+
+.memory-list li {
+  padding: 0.5rem;
+  background-color: #f8f9fa;
+  border-radius: 4px;
+  margin-bottom: 0.5rem;
+  word-break: break-word;
+}
+
+.memory-list li.empty {
+  background-color: transparent;
+  padding: 0;
+  color: #6c757d;
+  font-style: italic;
+}
